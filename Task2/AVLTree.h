@@ -195,10 +195,15 @@ public:
 	int getCount() {
 		return this->count;
 	}
-	T* toArray() {
+	T* toArray() { //Array of nodes
 		T* array = new T[this->count];
 		int arrayPointer = 0;
 		_toArray(this->root, array, arrayPointer);
 		return array;
+	}
+	std::list<T> leavesList() { //List of leaves
+		std::list<T> list = std::list<T>();
+		_leavesList(this->root, list);
+		return list;
 	}
 };
