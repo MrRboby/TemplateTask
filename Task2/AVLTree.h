@@ -1,4 +1,5 @@
 #pragma once
+#include <list>
 
 template <class T> 
 class AVLtree;
@@ -167,6 +168,14 @@ private:
 		if (treePointer->right != nullptr)
 			_toArray(treePointer->right, array, arrayPointer);
 	}
+	void _leavesList(AVLnode<T>* pointer, std::list<T>& list) {
+		if (pointer->left != nullptr)
+			_leavesList(pointer->left, list);
+		if (pointer->right != nullptr)
+			_leavesList(pointer->right, list);
+		if (pointer->left == nullptr && pointer->right == nullptr)
+			list.push_back(pointer->data);
+	}
 public:
 	AVLtree() {
 		this->root = nullptr;
@@ -202,7 +211,7 @@ public:
 		return array;
 	}
 	std::list<T> leavesList() { //List of leaves
-		std::list<T> list = std::list<T>();
+		std::list<T> list;
 		_leavesList(this->root, list);
 		return list;
 	}

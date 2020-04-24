@@ -1,4 +1,5 @@
 ﻿#include <iostream>
+#include <list>
 #include "AVLTree.h"
 
 int main() {
@@ -14,6 +15,10 @@ int main() {
     int* arr = tree.toArray();
     for (int i = 0; i < tree.getCount(); i++)
         std::cout << arr[i] << " ";
+    std::cout << "\n";
     delete[] arr;
+    std::list<int> lst = tree.leavesList();
+    for (int i : lst)
+        std::cout << i << " ";
     return 0;
 }
